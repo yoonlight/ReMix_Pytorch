@@ -1,0 +1,10 @@
+munch
+scipy
+ffmpeg
+ffmpeg-python
+opencv-python
+scikit-image
+autopep8
+pylint
+gdown
+ipykernel
