@@ -12,13 +12,7 @@
 		"source=${localWorkspaceFolder}/../datasets,target=/workspaces/ReMix_Pytorch/datasets,type=bind,consistency=cached"
 	],
 	// Features to add to the dev container. More info: https://containers.dev/features.
-	"features": {
-		"ghcr.io/devcontainers/features/git:1": {
-			"ppa": true,
-			"version": "latest"
-		},
-		"ghcr.io/devcontainers-contrib/features/wget-apt-get:1": {}
-	},
+	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
