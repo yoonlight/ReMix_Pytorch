@@ -53,7 +53,7 @@ def calculate_metrics(nets, args, step, mode):
                                          imagenet_normalize=False)
 
             task = '%s2%s' % (src_domain, trg_domain)
-            path_fake = os.path.join(args.eval_dir, task)
+            path_fake = os.path.join(args.eval_dir, str(step), task)
             shutil.rmtree(path_fake, ignore_errors=True)
             os.makedirs(path_fake)
 
@@ -128,7 +128,7 @@ def calculate_fid_for_all_tasks(args, domains, step, mode):
         for src_domain in src_domains:
             task = '%s2%s' % (src_domain, trg_domain)
             path_real = os.path.join(args.train_img_dir, trg_domain)
-            path_fake = os.path.join(args.eval_dir, task)
+            path_fake = os.path.join(args.eval_dir, str(step), task)
             print('Calculating FID for %s...' % task)
             fid_value = calculate_fid_given_paths(
                 paths=[path_real, path_fake],
