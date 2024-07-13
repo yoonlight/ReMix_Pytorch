@@ -185,6 +185,7 @@ if __name__ == '__main__':
                        help='the probability of augmentation p')
     parser.add_argument('--beta_d', type=float, default=0.2,
                        help=') # the beta distribution')
-
+    parser.add_argument('--cuda', type=str, default='-1')
     args = parser.parse_args()
+    os.environ['CUDA_VISIBLE_DEVICES'] = args.cuda
     main(args)
