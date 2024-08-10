@@ -165,7 +165,7 @@ def interpolate(nets, args, x_src, s_prev, s_next):
 
     for alpha in alphas:
         s_ref = torch.lerp(s_prev, s_next, alpha)
-        x_fake = nets.generator(x_src, s_ref, masks=masks)
+        x_fake = nets.generator(x=x_src, s=s_ref, masks=masks)
         entries = torch.cat([x_src.cpu(), x_fake.cpu()], dim=2)
         frame = torchvision.utils.make_grid(entries, nrow=B, padding=0, pad_value=-1).unsqueeze(0)
         frames.append(frame)
