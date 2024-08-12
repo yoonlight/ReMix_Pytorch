@@ -23,6 +23,7 @@ from core.checkpoint import CheckpointIO
 from core.data_loader import InputFetcher
 import core.utils as utils
 from metrics.eval import calculate_metrics
+from generate_image import generate_image
 
 import random
 import numpy as np
@@ -195,7 +196,16 @@ class Solver(nn.Module):
         resume_iter = args.resume_iter
         self._load_checkpoint(args.resume_iter)
         calculate_metrics(nets_ema, args, step=resume_iter, mode='latent')
-        calculate_metrics(nets_ema, args, step=resume_iter, mode='reference')
+        # calculate_metrics(nets_ema, args, step=resume_iter, mode='reference')
+
+    @torch.no_grad()
+    def generate_image(self):
+        args = self.args
+        nets_ema = self.nets_ema
+        resume_iter = args.resume_iter
+        self._load_checkpoint(resume_iter)
+        generate_image(nets_ema, args, step=resume_iter, mode='latent')
+        # calculate_metrics(nets_ema, args, step=resume_iter, mode='reference')
 
 
 def compute_d_loss(nets, args, x_real, y_org, y_trg, z_trg=None, x_ref=None, masks=None):

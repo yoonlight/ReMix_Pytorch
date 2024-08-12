@@ -73,6 +73,8 @@ def main(args):
         solver.sample(loaders)
     elif args.mode == 'eval':
         solver.evaluate()
+    elif args.mode == 'generate':
+        solver.generate_image()
     elif args.mode == 'align':
         from core.wing import align_faces
         align_faces(args, args.inp_dir, args.out_dir)
@@ -135,7 +137,7 @@ if __name__ == '__main__':
 
     # misc
     parser.add_argument('--mode', type=str, required=True,
-                        choices=['train', 'sample', 'eval', 'align'],
+                        choices=['train', 'sample', 'eval', 'generate', 'align'],
                         help='This argument is used in solver')
     parser.add_argument('--num_workers', type=int, default=4,
                         help='Number of workers used in DataLoader')
